@@ -5,7 +5,7 @@
             <url>src/service/OperacionServiceImpl.java</url>
             <bookmark id="1">
                 <name/>
-                <line>29</line>
+                <line>31</line>
                 <key/>
             </bookmark>
         </file>
@@ -17,7 +17,6 @@
             <file>file:/home/labtecweb10/NetBeansProjects/aooCalculadora/src/model/IOperacionModel.java</file>
             <file>file:/home/labtecweb10/NetBeansProjects/aooCalculadora/src/service/OperacionServiceImpl.java</file>
             <file>file:/home/labtecweb10/NetBeansProjects/aooCalculadora/src/service/IOperacionService.java</file>
-            <file>file:/home/labtecweb10/NetBeansProjects/aooCalculadora/src/entity/Token.java</file>
             <file>file:/home/labtecweb10/NetBeansProjects/aooCalculadora/src/controller/CalculadoraController.java</file>
         </group>
     </open-files>

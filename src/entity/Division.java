@@ -15,7 +15,7 @@ public class Division extends Operacion{
     
     @Override
     public void operar() {
-        this.resultado = valor1 / valor2;
+        this.setResultado(this.getValor1() / this.getValor2());
     }
     
 }

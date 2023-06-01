@@ -15,7 +15,7 @@ public class Potencia extends Operacion{
     
     @Override
     public void operar() {
-        this.resultado = Math.pow(valor1, valor2);
+        this.setResultado(Math.pow(this.getValor1(), this.getValor2()));
     }
     
 }

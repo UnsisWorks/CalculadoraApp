@@ -34,7 +34,7 @@ public class Token {
     public void getSplitToken(String exp) {
         // String Tokenizer o Exprecions regulares o metodo Split
         System.out.println("Exprecion : " + exp);
-        String regex = "[\\d.]+|[-,+,*,/,%,^,√]";
+        String regex = "[\\d.]+|[-+*/%^√]";
         Pattern patron = Pattern.compile(regex);
         Matcher coincidencia = patron.matcher(exp);
 
@@ -49,12 +49,14 @@ public class Token {
         
         this.setOp(coincidencia.group().charAt(0));
         
-        if (this.op == '√') {
+        System.out.println("Val1: " + this.getOp());
+        if (this.op == '+') {
 
             // Encontram0s el valor
             coincidencia.find();
             
             this.setVal2(Double.parseDouble(coincidencia.group()));
+            
         }
     }
     
@@ -81,5 +83,11 @@ public class Token {
     public void setOp(char op) {
         this.op = op;
     }
+
+    @Override
+    public String toString() {
+        return "Token{" + "val1=" + val1 + ", val2=" + val2 + ", op=" + op + '}';
+    }
+    
     
 }

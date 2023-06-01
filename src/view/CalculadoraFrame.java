@@ -1,6 +1,10 @@
-package calculadora;
+package view;
 
+import appCalculadoraMVC.entity.Operacion;
 import controller.CalculadoraController;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -11,7 +15,8 @@ public class CalculadoraFrame extends javax.swing.JFrame {
     // Variable para almacenar la exprecion aritmetica
     protected String exprecion;
     protected CalculadoraController controller;
-    
+    private List <Operacion> lista;
+    private DefaultTableModel model;
     
     public CalculadoraFrame() {
         initComponents();
@@ -19,7 +24,8 @@ public class CalculadoraFrame extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.exprecion = "";
         controller = new CalculadoraController();
-
+        lista = new ArrayList<>();
+        model = (DefaultTableModel) this.jTable2.getModel();
     }
 
     @SuppressWarnings("unchecked")
@@ -53,6 +59,7 @@ public class CalculadoraFrame extends javax.swing.JFrame {
         button18 = new javax.swing.JButton();
         buttonPot = new javax.swing.JButton();
         buttonMod = new javax.swing.JButton();
+        buttonFact = new javax.swing.JButton();
         buttonIgua = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -249,7 +256,7 @@ public class CalculadoraFrame extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(153, 204, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel3.setLayout(new java.awt.GridLayout(4, 2, 5, 5));
+        jPanel3.setLayout(new java.awt.GridLayout(3, 2, 5, 5));
 
         buttonSum.setBackground(new java.awt.Color(51, 153, 255));
         buttonSum.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
@@ -335,6 +342,14 @@ public class CalculadoraFrame extends javax.swing.JFrame {
         });
         jPanel3.add(buttonMod);
 
+        buttonFact.setText("!");
+        buttonFact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonFactActionPerformed(evt);
+            }
+        });
+        jPanel3.add(buttonFact);
+
         buttonIgua.setBackground(new java.awt.Color(51, 153, 255));
         buttonIgua.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         buttonIgua.setForeground(new java.awt.Color(255, 255, 255));
@@ -364,7 +379,7 @@ public class CalculadoraFrame extends javax.swing.JFrame {
         jTable2.setShowGrid(true);
         jScrollPane3.setViewportView(jTable2);
 
-        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, 585, 160));
+        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 585, 180));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -379,7 +394,7 @@ public class CalculadoraFrame extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,18 +403,18 @@ public class CalculadoraFrame extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
-        // TODO add your handling code here:
-        showText("3");
+        this.exprecion += button3.getText();
+        this.screen.setText(exprecion);
     }//GEN-LAST:event_button3ActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
@@ -441,8 +456,8 @@ public class CalculadoraFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_button8ActionPerformed
 
     private void button9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button9ActionPerformed
-        // TODO add your handling code here:
-        showText("9");
+        this.exprecion += button9.getText();
+        this.screen.setText(exprecion);
     }//GEN-LAST:event_button9ActionPerformed
 
     private void button0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button0ActionPerformed
@@ -476,8 +491,8 @@ public class CalculadoraFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonPorActionPerformed
 
     private void buttonDivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDivActionPerformed
-        // TODO add your handling code here:
-        showText("/");
+        this.exprecion += buttonDiv.getText();
+        this.screen.setText(exprecion);
     }//GEN-LAST:event_buttonDivActionPerformed
 
     private void buttonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClearActionPerformed
@@ -487,16 +502,25 @@ public class CalculadoraFrame extends javax.swing.JFrame {
 
     private void buttonIguaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonIguaActionPerformed
         // Llamar a el controlador
-        controller.getToken(exprecion);
+        exprecion = this.screen.getText().trim();
+        controller.realizarOperacion(lista, exprecion, model);
+        
     }//GEN-LAST:event_buttonIguaActionPerformed
 
     private void buttonModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModActionPerformed
-        showText("%");
+        this.exprecion += buttonMod.getText();
+        this.screen.setText(exprecion);
     }//GEN-LAST:event_buttonModActionPerformed
 
     private void buttonPotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPotActionPerformed
-        showText("^");
+        this.exprecion += "^";
+        this.screen.setText(exprecion);
     }//GEN-LAST:event_buttonPotActionPerformed
+
+    private void buttonFactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFactActionPerformed
+        this.exprecion += "!";
+        this.screen.setText(exprecion);
+    }//GEN-LAST:event_buttonFactActionPerformed
 
     private void showText(String cad) {
         String num = screen.getText();
@@ -556,6 +580,7 @@ public class CalculadoraFrame extends javax.swing.JFrame {
     private javax.swing.JButton button9;
     private javax.swing.JButton buttonClear;
     private javax.swing.JButton buttonDiv;
+    private javax.swing.JButton buttonFact;
     private javax.swing.JButton buttonIgua;
     private javax.swing.JButton buttonMod;
     private javax.swing.JButton buttonPor;
